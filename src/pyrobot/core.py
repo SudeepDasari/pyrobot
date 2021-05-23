@@ -54,7 +54,7 @@ def make_robot(robot_cfg, ns="", overrides=[], ros_launch_manager=None):
         robot_cfg = compose("robot/" + robot_cfg + ".yaml", overrides)
     elif not isinstance(robot_cfg, DictConfig):
         raise ValueError("Expected either robot name or robot config object")
-    ros_launch_manager.launch_cfg(robot_cfg.ros_launch, ns=ns)
+    # ros_launch_manager.launch_cfg(robot_cfg.ros_launch, ns=ns)
 
     module_dict = {}
     for module_cfg in robot_cfg.modules:

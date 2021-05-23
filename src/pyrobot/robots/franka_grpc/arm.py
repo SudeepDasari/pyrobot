@@ -19,9 +19,10 @@ from fair_controller_manager import RobotInterface
 import torch
 import torchcontrol as tc
 
-kp = [20, 30, 25, 25, 15, 10, 10] # [300.0, 300.0, 300.0, 300.0, 125.0, 75.0, 25.0]
-kd = [1.0, 1.5, 1.0, 1.0, 0.5, 0.5, 0.5] # [25.0, 25.0, 25.0, 25.0, 15.0, 12.5, 7.5]
-robot_description_path = "/home/pyrobot-neotic/fair-robot-envs/fair_controller_manager/data/franka_panda/panda_arm.urdf"
+kp = [80, 120, 100, 100, 70, 50, 20] # [20, 30, 25, 25, 15, 10, 10] # [300.0, 300.0, 300.0, 300.0, 125.0, 75.0, 25.0]
+kd = [10, 10, 10, 10, 5, 5, 5] # [1, 1.5, 1, 1, 0.5, 0.5, 0.5] # [25.0, 25.0, 25.0, 25.0, 15.0, 12.5, 7.5]
+robot_description_path = "/home/fair-pitt/fair-robot-envs/fair_controller_manager/data/franka_panda/panda_arm.urdf"
+
 
 
 class FrankaGRPCArm(Arm):
@@ -137,6 +138,7 @@ class FrankaGRPCArm(Arm):
         """
         positions = torch.Tensor(positions)
         if wait:
+            self.robot.terminate_current_policy()
             self.robot.set_joint_positions(positions)
             self.joint_update_initialized = False
         else:

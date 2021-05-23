@@ -25,16 +25,6 @@ environment:
       ns: ''
       overrides: []
 
-    - algorithm: 'franka_moveit_planner'
-      label: 'moveit_planner'
-      ns: ''
-      overrides: []
-
-    - algorithm: 'franka_kdl_kinematics'
-      label: 'kdl_kinematics'
-      ns: ''
-      overrides: []
-
   # If sim, add any simulator related config
   simlator: null # other options: habitat and gazebo
 
